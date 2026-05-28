@@ -1841,14 +1841,56 @@ document.querySelectorAll(".counter").forEach(counter => {
     update();
 });
 
-// ========== Product Data with dedicated detail pages ==========
+// ========== Product Data with local images ==========
 const products = [
-    { title: "Netflix Premium", desc: "4K premium Netflix access with instant delivery.", price: "Rs. 999", old: "Rs. 1299", image: "https://i.ibb.co/MDZNRNFw/06d3c1e2a93e09d9be2e3027ed05624b.jpg", detailPage: "netflix-premium.html" },
-    { title: "Amazon Prime", desc: "Premium Prime subscription with fast access.", price: "Rs. 899", old: "Rs. 1199", image: "https://i.ibb.co/RkMDrD8C/a0c56db3d0f7b4f7eca6b9b6a8724e90.jpg", detailPage: "amazon-prime.html" },
-    { title: "OpenAI Subscription", desc: "Premium OpenAI access instantly delivered.", price: "Rs. 1499", old: "Rs. 1799", image: "https://i.ibb.co/SDxNzmPt/6bac6460e0d2c9e3f386caab8a0a9500.jpg", detailPage: "chatgptplus.html" },
-    { title: "PUBG UC", desc: "UC top-ups delivered instantly.", price: "Rs. 699", old: "Rs. 899", image: "https://i.ibb.co/MDZNRNFw/06d3c1e2a93e09d9be2e3027ed05624b.jpg", detailPage: "pubg-uc.html" },
-    { title: "Graphic Design Bundle", desc: "Premium templates and assets.", price: "Rs. 999", old: "Rs. 1499", image: "https://i.ibb.co/RkMDrD8C/a0c56db3d0f7b4f7eca6b9b6a8724e90.jpg", detailPage: "graphic-design-bundle.html" },
-    { title: "Editing Assets", desc: "Transitions, LUTs and effects pack.", price: "Rs. 799", old: "Rs. 1099", image: "https://i.ibb.co/SDxNzmPt/6bac6460e0d2c9e3f386caab8a0a9500.jpg", detailPage: "editing-assets.html" }
+    {
+        title: "Tech AI Reels Bundle",
+        desc: "Futuristic AI-generated tech reels with premium ready-to-post content.",
+        price: "Rs. 999",
+        old: "Rs. 1299",
+        image: "img/aitech.png",
+        detailPage: "tech-ai-reels-bundle.html"
+    },
+    {
+        title: "Funny AI Reels Bundle",
+        desc: "Viral funny AI reels packed with entertaining ready-made content.",
+        price: "Rs. 999",
+        old: "Rs. 1299",
+        image: "img/aifunny.png",
+        detailPage: "funny-ai-reels-bundle.html"
+    },
+    {
+        title: "Craft AI Reels Bundle",
+        desc: "Creative craft and DIY AI reels bundle with engaging visuals.",
+        price: "Rs. 999",
+        old: "Rs. 1299",
+        image: "img/aicraft.png",
+        detailPage: "craft-ai-reels-bundle.html"
+    },
+    {
+        title: "Driving AI Reels Bundle",
+        desc: "High-quality AI driving reels with cinematic motion and premium edits.",
+        price: "Rs. 999",
+        old: "Rs. 1299",
+        image: "img/aidriving.png",
+        detailPage: "driving-ai-reels-bundle.html"
+    },
+    {
+        title: "Cooking AI Reels Bundle",
+        desc: "Delicious AI-generated cooking reels ready for instant posting.",
+        price: "Rs. 999",
+        old: "Rs. 1299",
+        image: "img/aicooking.png",
+        detailPage: "cooking-ai-reels-bundle.html"
+    },
+    {
+    title: "Tom & Jerry AI Reels Bundle",
+    desc: "Funny Tom & Jerry style AI reels bundle with viral cartoon moments ready to post.",
+    price: "Rs. 999",
+    old: "Rs. 1299",
+    image: "img/aitomjerry.jpeg",
+    detailPage: "tom-jerry-ai-reels-bundle.html"
+}
 ];
 
 // Render Products
