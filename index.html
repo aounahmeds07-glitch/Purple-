@@ -1,0 +1,1947 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PurpleNest</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+    <style>
+:root {
+    --bg: #050505;
+    --card: rgba(20, 20, 20, .65);
+    --purple: #5D3FD3;
+    --purple-hover: #7B60E3;
+    --border: rgba(93, 63, 211, .35);
+    --text: #ffffff;
+    --muted: #d5d5d5;
+    --nav-bg: rgba(8, 8, 8, 0.85);
+    --nav-border: rgba(255, 255, 255, 0.06);
+    --transition-speed: 0.3s;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden; 
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    overflow-x: hidden;
+
+    /* IMAGE BACKGROUND */
+    background:
+        linear-gradient(
+            rgba(8, 0, 15, 0.72),
+            rgba(4, 0, 10, 0.78)
+        ),
+        url("https://i.ibb.co/HDh3DLHX/9856fa2ed296d9426fa7869fc33ad24a-1-1-1.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    /* smooth rendering */
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+img {
+    width: 100%;
+    display: block;
+    border-radius: 18px;
+}
+
+.container {
+    width: min(1200px, 92%);
+    margin: auto;
+}
+
+section {
+    padding: 55px 0;
+}
+
+h1,
+h2,
+h3 {
+    color: var(--purple);
+    line-height: 1.2;
+}
+
+p {
+    color: var(--text);
+}
+
+ul li {
+    color: var(--text);
+}
+
+.glass {
+    background: var(--card);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 22px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: .25s ease;
+    cursor: pointer;
+    font-size: 14px;
+    letter-spacing: 0.3px;
+}
+
+.btn-primary {
+    background: var(--purple);
+    color: #fff;
+    border: none;
+}
+
+.btn-primary:hover {
+    background: var(--purple-hover);
+    box-shadow: 0 0 20px rgba(93, 63, 211, .3);
+    transform: translateY(-1px);
+}
+
+.btn-outline {
+    border: 1px solid var(--border);
+    color: #fff;
+    background: transparent;
+}
+
+.btn-outline:hover {
+    border-color: var(--purple);
+    background: rgba(93, 63, 211, 0.08);
+    transform: translateY(-1px);
+}
+
+/* ============ NAVIGATION ============ */
+nav {
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    background: var(--nav-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--nav-border);
+    transition: all var(--transition-speed) ease;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+}
+
+nav.scrolled {
+    background: rgba(8, 8, 8, 0.95);
+    border-bottom: 1px solid rgba(93, 63, 211, 0.15);
+    box-shadow: 0 4px 40px rgba(93, 63, 211, 0.06);
+}
+
+.nav-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    position: relative;
+    padding: 16px 0;
+    min-height: 65px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #fff;
+    font-size: 22px;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: -0.3px;
+    flex-shrink: 0;
+    white-space: nowrap;
+    transition: color var(--transition-speed) ease;
+}
+
+.logo-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: var(--purple);
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+    flex-shrink: 0;
+    box-shadow: 0 4px 15px rgba(93, 63, 211, 0.3);
+    transition: all var(--transition-speed) ease;
+}
+
+.logo:hover .logo-icon {
+    box-shadow: 0 6px 25px rgba(93, 63, 211, 0.5);
+    transform: scale(1.05);
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+}
+
+.logo-text .brand-name {
+    color: #fff;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.2px;
+    transition: color var(--transition-speed) ease;
+}
+
+.logo-text .brand-tagline {
+    color: var(--muted);
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    opacity: 0.7;
+}
+
+.logo:hover .brand-name {
+    color: var(--purple-hover);
+}
+
+.nav-links {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    color: #ccc;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 14px;
+    padding: 10px 16px;
+    border-radius: 25px;
+    transition: all var(--transition-speed) ease;
+    position: relative;
+    letter-spacing: 0.2px;
+    white-space: nowrap;
+}
+
+.nav-links a:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.nav-links a.active-link {
+    color: #fff;
+    background: rgba(93, 63, 211, 0.15);
+    font-weight: 600;
+}
+
+.nav-cta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+.nav-cta .btn {
+    padding: 10px 20px;
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+.nav-links .mobile-cta {
+    display: none;
+}
+
+/* Hamburger Menu */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    z-index: 1000;
+    padding: 8px;
+    border-radius: 8px;
+    transition: all var(--transition-speed) ease;
+    background: transparent;
+    border: none;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.menu-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.menu-toggle span {
+    display: block;
+    width: 26px;
+    height: 2.5px;
+    background: #fff;
+    border-radius: 10px;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: center;
+}
+
+.menu-toggle.active span:nth-child(1) {
+    transform: translateY(7.5px) rotate(45deg);
+}
+
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+
+.menu-toggle.active span:nth-child(3) {
+    transform: translateY(-7.5px) rotate(-45deg);
+}
+
+.nav-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 997;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+}
+
+.nav-overlay.active {
+    display: block;
+    opacity: 1;
+}
+
+/* ============ HERO ============ */
+.hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+    margin-bottom: 0px;
+}
+
+.hero h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    margin-bottom: 25px;
+    color: var(--muted);
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+/* HERO IMAGE CARD */
+.hero-image {
+    padding: 25px;
+    position: relative;
+    overflow: visible;
+    border-radius: 22px;
+}
+
+.hero-img {
+    width: 100%;
+    display: block;
+    border-radius: 18px;
+}
+
+/* FLOATING PNG */
+.hero-floating {
+    position: absolute;
+    top: -18px;
+    right: -18px;
+    width: 120px;
+    height: auto;
+    z-index: 5;
+    pointer-events: none;
+    filter: drop-shadow(0 12px 28px rgba(93,63,211,.45));
+    animation: heroFloat 4s ease-in-out infinite;
+}
+
+@keyframes heroFloat {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+    100% { transform: translateY(0); }
+}
+
+@media (max-width:768px) {
+    .hero {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    .hero h1 {
+        font-size: 38px;
+    }
+    .hero-floating {
+        width: 85px;
+        top: -10px;
+        right: -10px;
+    }
+}
+
+/* ============ COUNTERS ============ */
+.counter-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-top: 0px;
+}
+
+.counter-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25), 0 1px 0 rgba(255, 255, 255, 0.06) inset;
+    border-radius: 18px;
+    padding: 18px 14px;
+    text-align: center;
+}
+
+.counter-card h2 {
+    font-size: 28px;
+    margin-bottom: 6px;
+    color: var(--purple);
+    font-weight: 700;
+}
+
+.counter-card p {
+    color: #ffffff;
+    font-size: 14px;
+    line-height: 1.4;
+    margin: 0;
+}
+
+@media (max-width:768px){
+    .counter-grid{
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
+    .counter-card{
+        padding: 14px 8px;
+        border-radius: 14px;
+    }
+    .counter-card h2{
+        font-size: 22px;
+    }
+    .counter-card p{
+        font-size: 12px;
+    }
+}
+
+/* ============ PRODUCTS ============ */
+#shop h2 {
+    text-align: center;
+    margin-bottom: 6px;
+}
+
+#shop .section-tagline {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.product-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.08) inset;
+    border-radius: 20px;
+    padding: 18px;
+}
+
+.product-card h3 {
+    text-align: center;
+    margin: 14px 0 8px;
+    color: var(--purple);
+}
+
+.product-card p {
+    text-align: center;
+    min-height: 50px;
+    color: #ffffff;
+}
+
+.price {
+    margin: 10px 0 16px;
+}
+
+.old {
+    text-decoration: line-through;
+    color: #aaa;
+    margin-right: 10px;
+}
+
+.new {
+    color: var(--purple);
+    font-weight: 700;
+}
+
+.card-buttons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* ============ TERMS ============ */
+.terms{
+    padding:70px 0;
+}
+
+.terms-card{
+    max-width:950px;
+    margin:auto;
+    padding:45px 35px;
+    background:rgba(255,255,255,.03);
+    backdrop-filter:blur(24px);
+    -webkit-backdrop-filter:blur(24px);
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:24px;
+    box-shadow: 0 8px 25px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.05);
+}
+
+.terms-card h2{
+    font-size:36px;
+    margin-bottom:26px;
+    text-align:left;
+}
+
+.terms-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
+}
+
+.term-box{
+    background:rgba(255,255,255,.03);
+    border:1px solid rgba(255,255,255,.10);
+    border-radius:16px;
+    padding:22px;
+}
+
+.term-box h3{
+    margin-bottom:12px;
+    font-size:20px;
+    color:#fff;
+}
+
+.term-box p{
+    color:var(--muted);
+    line-height:1.8;
+    text-align:left;
+}
+
+@media (max-width:768px){
+    .terms-card{
+        padding:35px 20px;
+    }
+    .terms-card h2{
+        font-size:28px;
+    }
+    .terms-grid{
+        grid-template-columns:1fr;
+    }
+}
+
+/* ===============================
+   ABOUT + TERMS COMMON SPACING
+================================= */
+.about,
+.terms{
+    padding:70px 18px;
+}
+
+/* ===============================
+   ABOUT US
+================================= */
+.about-card{
+    width:100%;
+    max-width:900px;
+    margin:0 auto;
+    padding:45px 35px;
+    text-align:left;
+    background:rgba(255,255,255,.03);
+    backdrop-filter:blur(24px);
+    -webkit-backdrop-filter:blur(24px);
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:24px;
+    box-shadow: 0 8px 25px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.05);
+}
+
+.section-tag{
+    display:inline-block;
+    margin-bottom:16px;
+    padding:8px 18px;
+    border-radius:40px;
+    font-size:13px;
+    font-weight:600;
+    letter-spacing:.6px;
+    color:#fff;
+    background:rgba(93,63,211,.18);
+    border:1px solid rgba(255,255,255,.10);
+}
+
+.about-card h2{
+    font-size:36px;
+    margin-bottom:18px;
+    text-align:left;
+}
+
+.about-card p{
+    margin-bottom:16px;
+    text-align:left;
+    line-height:1.9;
+    color:var(--muted);
+}
+
+.about-points{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:14px;
+    margin-top:26px;
+}
+
+.about-point{
+    background:rgba(255,255,255,.03);
+    border:1px solid rgba(255,255,255,.10);
+    border-radius:14px;
+    padding:14px;
+    color:#fff;
+    text-align:left;
+    font-weight:500;
+}
+
+/* ===============================
+   TERMS
+================================= */
+.terms-card{
+    width:100%;
+    max-width:950px;
+    margin:0 auto;
+    padding:45px 35px;
+    background:rgba(255,255,255,.03);
+    backdrop-filter:blur(24px);
+    -webkit-backdrop-filter:blur(24px);
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:24px;
+    box-shadow: 0 8px 25px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.05);
+}
+
+.terms-card h2{
+    font-size:36px;
+    margin-bottom:26px;
+    text-align:left;
+}
+
+.terms-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
+}
+
+.term-box{
+    background:rgba(255,255,255,.03);
+    border:1px solid rgba(255,255,255,.10);
+    border-radius:16px;
+    padding:22px;
+}
+
+.term-box h3{
+    margin-bottom:12px;
+    font-size:20px;
+    color:#fff;
+}
+
+.term-box p{
+    color:var(--muted);
+    line-height:1.8;
+    text-align:left;
+}
+
+/* ===============================
+   MOBILE
+================================= */
+@media (max-width:768px){
+    .about,
+    .terms{
+        padding:55px 16px;
+    }
+    .about-card,
+    .terms-card{
+        padding:28px 18px;
+        border-radius:20px;
+    }
+    .about-card h2,
+    .terms-card h2{
+        font-size:28px;
+    }
+    .about-points,
+    .terms-grid{
+        grid-template-columns:1fr;
+        gap:14px;
+    }
+    .about-point,
+    .term-box{
+        padding:16px;
+    }
+}
+
+@media (max-width:480px){
+    .about,
+    .terms{
+        padding:45px 14px;
+    }
+    .about-card,
+    .terms-card{
+        padding:22px 16px;
+    }
+    .about-card h2,
+    .terms-card h2{
+        font-size:24px;
+    }
+    .term-box h3{
+        font-size:18px;
+    }
+}
+/* OWNER SECTION */
+
+.owner-section{
+    padding:90px 20px;
+}
+
+.owner-card{
+    max-width:1000px;
+    margin:auto;
+
+    display:flex;
+    align-items:center;
+    gap:35px;
+
+    padding:40px;
+
+    background:rgba(255,255,255,.05);
+
+    border:1px solid rgba(255,255,255,.12);
+
+    border-radius:28px;
+
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+
+    box-shadow:
+        0 0 30px rgba(162,89,255,.18);
+}
+
+.owner-image{
+    flex-shrink:0;
+}
+
+.image-placeholder{
+    width:170px;
+    height:170px;
+
+    border-radius:50%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(162,89,255,.35),
+            rgba(95,44,130,.65)
+        );
+
+    border:2px solid rgba(255,255,255,.12);
+
+    color:#fff;
+
+    font-size:18px;
+    font-weight:600;
+
+    box-shadow:
+        0 0 25px rgba(162,89,255,.35);
+}
+
+.owner-content{
+    flex:1;
+}
+
+.owner-content h2{
+    color:#fff;
+
+    font-size:30px;
+
+    margin-bottom:18px;
+}
+
+.owner-content p{
+    color:#ddd;
+
+    line-height:1.8;
+
+    margin-bottom:14px;
+
+    font-size:16px;
+}
+
+/* OWNER IMAGE */
+
+.owner-image img{
+    width:170px;
+    height:170px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    border:2px solid rgba(255,255,255,.12);
+
+    box-shadow:
+        0 0 25px rgba(162,89,255,.35);
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+    .owner-card{
+        flex-direction:column;
+        text-align:center;
+
+        padding:35px 25px;
+    }
+
+    .owner-content h2{
+        font-size:26px;
+    }
+
+    .image-placeholder,
+    .owner-image img{
+        width:150px;
+        height:150px;
+    }
+}
+
+/* ============ TESTIMONIALS ============ */
+.testimonials-section {
+    padding: 90px 20px;
+    text-align: center;
+    overflow: hidden;
+}
+
+.section-head h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: var(--purple);
+}
+
+.section-head p {
+    color: var(--muted);
+    margin-bottom: 40px;
+}
+
+.testimonial-slider {
+    width: 100vw;         
+    overflow: hidden;              
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    padding: 10px 0;
+    mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+}
+
+.testimonial-track {
+    display: flex;
+    gap: 20px;
+    width: max-content;
+    animation: scrollTestimonials 35s linear infinite;
+    padding: 0 20px;
+    will-change: transform;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+}
+
+.testimonial-track:hover {
+    animation-play-state: paused;
+}
+
+.testimonial-card {
+    min-width: 300px;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.08) inset;
+    padding: 25px;
+    border-radius: 20px;
+    text-align: left;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(93, 63, 211, 0.6);
+}
+
+.stars {
+    color: #f5b301;
+    margin-bottom: 12px;
+    font-size: 18px;
+}
+
+.testimonial-card p {
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 15px;
+}
+
+.testimonial-card h4 {
+    font-size: 16px;
+    color: #fff;
+}
+
+.review-btn {
+    margin-top: 40px;
+    background: var(--purple);
+    color: #fff;
+    border: none;
+    padding: 14px 26px;
+    border-radius: 14px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    transition: .25s ease;
+    font-family: "Poppins", sans-serif;
+}
+
+.review-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px rgba(93, 63, 211, .25);
+    background: var(--purple-hover);
+}
+
+@keyframes scrollTestimonials {
+    from { transform: translate3d(0, 0, 0); }
+    to   { transform: translate3d(-50%, 0, 0); }
+}
+
+/* ============ REVIEW MODAL ============ */
+.review-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, .75);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    z-index: 2000;
+}
+
+.review-modal.active {
+    display: flex;
+}
+
+.modal-box {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    width: 100%;
+    max-width: 450px;
+    padding: 30px;
+    position: relative;
+    animation: modalIn 0.3s ease;
+}
+
+@keyframes modalIn {
+    from { opacity: 0; transform: scale(0.9) translateY(20px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.close-btn {
+    position: absolute;
+    right: 18px;
+    top: 12px;
+    border: none;
+    background: none;
+    color: #fff;
+    font-size: 28px;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.close-btn:hover {
+    color: var(--purple);
+}
+
+.modal-box h3 {
+    color: var(--purple);
+    margin-bottom: 20px;
+}
+
+.modal-box input,
+.modal-box textarea,
+.modal-box select {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    border-radius: 12px;
+    outline: none;
+    font-size: 15px;
+    font-family: "Poppins", sans-serif;
+    transition: border-color 0.3s ease;
+}
+
+.modal-box input:focus,
+.modal-box textarea:focus,
+.modal-box select:focus {
+    border-color: var(--purple);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.modal-box textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.submit-review-btn {
+    width: 100%;
+    background: var(--purple);
+    color: #fff;
+    border: none;
+    padding: 14px;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .25s ease;
+    font-family: "Poppins", sans-serif;
+    font-size: 15px;
+}
+
+.submit-review-btn:hover {
+    box-shadow: 0 0 20px rgba(93, 63, 211, .25);
+    background: var(--purple-hover);
+}
+
+/* ============ TOAST ============ */
+.toast {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background: #111;
+    border: 1px solid var(--border);
+    color: #fff;
+    padding: 14px 22px;
+    border-radius: 12px;
+    opacity: 0;
+    pointer-events: none;
+    transition: .3s ease;
+    z-index: 3000;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+}
+
+.toast.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* ============CONTACT ============ */
+.contact-form {
+    display: grid;
+    gap: 16px;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 14px;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.08) inset;
+    color: #fff;
+    border-radius: 14px;
+    outline: none;
+    font-family: "Poppins", sans-serif;
+    transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: var(--purple);
+    background: rgba(255, 255, 255, 0.06);
+}
+
+textarea {
+    resize: none;
+    min-height: 140px;
+}
+
+#contact h2 {
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+#contact .section-tagline {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 30px;
+}
+/* ============ FOOTER ============ */
+
+.footer{
+    position:relative;
+    padding:80px 0 25px;
+    margin-top:80px;
+
+    background:
+        radial-gradient(circle at top right,
+        rgba(138,43,226,.12),
+        transparent 35%),
+        #050505;
+
+    border-top:1px solid rgba(255,255,255,.08);
+}
+
+.footer::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+        linear-gradient(
+        180deg,
+        rgba(138,43,226,.03),
+        transparent 60%);
+    pointer-events:none;
+}
+
+.footer-grid{
+    position:relative;
+    z-index:2;
+
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:40px;
+}
+
+.footer-brand{
+    max-width:360px;
+}
+
+.logo-wrap{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:18px;
+}
+
+.logo-icon{
+    width:42px;
+    height:42px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:12px;
+
+    background:linear-gradient(
+        135deg,
+        #7b2ff7,
+        #b16cff);
+
+    color:#fff;
+    font-weight:700;
+    font-size:1.2rem;
+
+    box-shadow:
+        0 0 20px rgba(123,47,247,.35);
+}
+
+.brand-name{
+    font-size:1.15rem;
+    font-weight:700;
+    color:#fff;
+    letter-spacing:.4px;
+}
+
+.footer-text{
+    color:rgba(255,255,255,.72);
+    line-height:1.8;
+    font-size:.95rem;
+}
+
+.footer-links h3{
+    font-size:1rem;
+    color:#fff;
+    margin-bottom:18px;
+    position:relative;
+}
+
+.footer-links h3::after{
+    content:"";
+    display:block;
+    width:34px;
+    height:2px;
+    margin-top:8px;
+
+    background:linear-gradient(
+        90deg,
+        #7b2ff7,
+        transparent);
+}
+
+.footer-links a{
+    display:block;
+    margin-bottom:12px;
+
+    color:rgba(255,255,255,.72);
+    text-decoration:none;
+
+    transition:.25s ease;
+}
+
+.footer-links a:hover{
+    color:#b16cff;
+    transform:translateX(4px);
+}
+
+.footer-bottom{
+    position:relative;
+    z-index:2;
+
+    margin-top:55px;
+    padding-top:22px;
+
+    text-align:center;
+
+    border-top:1px solid rgba(255,255,255,.06);
+}
+
+.footer-bottom p{
+    color:rgba(255,255,255,.55);
+    font-size:.9rem;
+}
+
+/* Mobile */
+@media(max-width:768px){
+
+    .footer{
+        padding:60px 0 20px;
+    }
+
+    .footer-grid{
+        gap:30px;
+    }
+
+    .footer-links h3{
+        margin-bottom:14px;
+    }
+}
+
+/* ============ RESPONSIVE (top-level only, no nested) ============ */
+@media(max-width:992px) {
+    .hero,
+    .features-grid,
+    .products-grid,
+    .reviews-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media(max-width:992px) {
+    .products-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media(max-width:700px) {
+    .products-grid { grid-template-columns: 1fr; }
+}
+
+@media(max-width:768px) {
+    .testimonial-card {
+        min-width: 260px;
+    }
+    .section-head h2 {
+        font-size: 1.7rem;
+    }
+    .toast {
+        left: 15px;
+        right: 15px;
+        text-align: center;
+    }
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media(max-width:700px) {
+    .hero,
+    .features-grid,
+    .products-grid,
+    .reviews-grid,
+    .counter-grid {
+        grid-template-columns: 1fr;
+    }
+    .hero h1 {
+        font-size: 36px;
+    }
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-wrap {
+        padding: 14px 0;
+        min-height: 60px;
+    }
+
+    .logo {
+        font-size: 18px;
+    }
+    .logo-icon {
+        width: 35px;
+        height: 35px;
+        font-size: 17px;
+        border-radius: 8px;
+    }
+    .logo-text .brand-name {
+        font-size: 17px;
+    }
+    .logo-text .brand-tagline {
+        font-size: 9px;
+    }
+
+    .nav-cta {
+        display: none;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 280px;
+        height: 100vh;
+        height: 100dvh;
+        background: rgba(10, 10, 10, 0.97);
+        backdrop-filter: blur(30px);
+        -webkit-backdrop-filter: blur(30px);
+        display: flex;
+        flex-direction: column;
+        padding: 90px 28px 30px;
+        gap: 4px;
+        border-left: 1px solid var(--nav-border);
+        transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 998;
+        box-shadow: -10px 0 40px rgba(0, 0, 0, 0.6);
+        overflow-y: auto;
+    }
+
+    .nav-links.active {
+        right: 0;
+    }
+
+    .nav-links a {
+        font-size: 15px;
+        padding: 13px 18px;
+        border-radius: 12px;
+        display: block;
+        width: 100%;
+        font-weight: 500;
+    }
+
+    .nav-links a:hover {
+        background: rgba(255, 255, 255, 0.06);
+    }
+
+    .nav-links a.active-link {
+        background: rgba(93, 63, 211, 0.18);
+    }
+
+    .nav-links.active .mobile-cta {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: auto;
+        padding-top: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .nav-links.active .mobile-cta .btn {
+        width: 100%;
+        text-align: center;
+        padding: 13px 20px;
+        font-size: 14px;
+    }
+
+    .nav-overlay.active {
+        display: block;
+        opacity: 1;
+    }
+
+    .hero-image {
+        padding: 15px;
+    }
+    .placeholder {
+        min-height: 220px;
+    }
+}
+
+@media(max-width:480px) {
+    .hero h1 {
+        font-size: 28px;
+    }
+    .products-grid {
+        grid-template-columns: 1fr;
+    }
+    .testimonial-card {
+        min-width: 240px;
+    }
+    .nav-links {
+        width: 100%;
+        right: -100%;
+    }
+    .counter-grid {
+        gap: 12px;
+    }
+    .counter-card {
+        padding: 20px;
+    }
+    .counter-card h2 {
+        font-size: 32px;
+    }
+}
+
+.text-white {
+    color: #ffffff;
+}
+.text-purple {
+    color: var(--purple);
+}
+    </style>
+</head>
+
+<body>
+    <!-- ============ NAVIGATION ============ -->
+    <nav id="navbar">
+        <div class="container nav-wrap">
+            <a href="#home" class="logo" aria-label="PurpleNest - Home">
+                <div class="logo-icon">P</div>
+                <div class="logo-text">
+                    <span class="brand-name">PurpleNest</span>
+                    <span class="brand-tagline">Digital Essentials in One Place</span>
+                </div>
+            </a>
+
+            <div class="nav-links" id="navLinks">
+                <a href="#home" class="active-link">Home</a>
+                <a href="#shop">Shop</a>
+                <a href="#reviews">Reviews</a>
+                <a href="#contact">Contact</a>
+                <div class="mobile-cta">
+                    <a href="https://wa.me/+923351182296" target="_blank" class="btn btn-primary">WhatsApp</a>
+                </div>
+            </div>
+
+            <div class="nav-cta">
+                <a href="https://wa.me/+923351182296" target="_blank" class="btn btn-primary">WhatsApp</a>
+            </div>
+
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="nav-overlay" id="navOverlay"></div>
+
+    <!-- ============ HERO ============ -->
+    <section id="home">
+        <div class="container hero">
+            <div>
+                <h1>Discover Premium Digital Products</h1>
+                <p>PurpleNest is your trusted destination for premium digital products crafted for creators, entrepreneurs, and modern online businesses. Explore a curated collection built to upgrade your digital experience with style and quality.</p>
+                <p>We provide premium digital subscriptions, design resources, gaming products, and learning bundles at affordable prices with fast support.</p>
+                <div class="hero-buttons">
+                    <a href="#shop" class="btn btn-primary">Shop Now</a>
+                    <a href="https://wa.me/+923351182296" target="_blank" class="btn btn-outline">Contact on WhatsApp</a>
+                </div>
+            </div>
+            <div class="glass hero-image">
+                <img src="https://i.ibb.co/gbWTgxW8/Picsart-26-05-28-05-50-17-690.jpg" alt="Digital Services Collage" class="hero-img">
+                <img src="https://i.ibb.co/LdNxdgy6/Picsart-26-05-27-22-55-04-643.png" alt="" class="hero-floating">
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ COUNTERS ============ -->
+    <section>
+        <div class="container">
+            <div class="counter-grid">
+                <div class="glass counter-card">
+                    <h2 class="counter" data-target="1500">0</h2>
+                    <p>Satisfied Customers</p>
+                </div>
+                <div class="glass counter-card">
+                    <h2 class="counter" data-target="3200">0</h2>
+                    <p>Total Sales</p>
+                </div>
+                <div class="glass counter-card">
+                    <h2 class="counter" data-target="850">0</h2>
+                    <p>Total Reviews</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ PRODUCTS ============ -->
+    <section id="shop">
+        <div class="container">
+            <h2>
+                <span class="text-white">Digital</span>
+                <span class="text-purple">Products</span>
+            </h2>
+            <p class="section-tagline">Premium subscriptions, resources & instant delivery</p>
+            <br><br>
+            <div class="products-grid" id="productsGrid"></div>
+        </div>
+    </section>
+
+    <!-- ============ TERMS & CONDITIONS ============ -->
+    <section class="terms" id="terms">
+        <div class="terms-card glass">
+            <span class="section-tag">TERMS & CONDITIONS</span>
+            <h2>Terms & Conditions For Digital Services</h2>
+            <div class="terms-grid">
+                <div class="term-box">
+                    <h3>Digital Delivery</h3>
+                    <p>All products and digital services are delivered online. Delivery time may vary depending on the selected service, but we always aim for quick and reliable completion.</p>
+                </div>
+                <div class="term-box">
+                    <h3>Payments</h3>
+                    <p>Full payment is required before delivery begins. Once payment is confirmed, your order is processed and prepared according to your selected service.</p>
+                </div>
+                <div class="term-box">
+                    <h3>No Refund Policy</h3>
+                    <p>Due to the nature of digital products and services, completed or delivered items are generally non-refundable. Please review details before placing your order.</p>
+                </div>
+                <div class="term-box">
+                    <h3>Customer Support</h3>
+                    <p>We are committed to helping our customers whenever needed. For questions, updates, or support, feel free to contact us and we will respond as quickly as possible.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ ABOUT US ============ -->
+    <section class="about" id="about">
+        <div class="about-card glass">
+            <span class="section-tag">ABOUT US</span>
+
+<h2>Welcome to PurpleNest — Premium Digital Products</h2>
+<p>
+Welcome to <strong>PurpleNest</strong> — your premium destination for carefully selected digital products designed to inspire, simplify, and elevate your online journey. We believe shopping for digital products should feel modern, effortless, and valuable.
+</p>
+
+<p>
+At PurpleNest, every product is chosen with attention to quality, creativity, and purpose. Whether you're a creator, entrepreneur, or simply exploring new digital possibilities, our goal is to bring you trusted products that help you grow with confidence.
+</p>
+
+<p>
+More than just a store, PurpleNest is built as a space where innovation meets style. With a premium experience, elegant design, and products made for today’s digital world, we’re here to make your digital journey smoother, smarter, and more inspiring.
+</p>
+<p>
+Thank you for being part of <strong>PurpleNest</strong>. Your trust means everything to us, and we’re committed to bringing you a premium digital experience with quality you can rely on.
+</p>
+
+<p>
+<strong>Your digital world starts here.</strong> 💜
+</p>
+
+            <div class="about-points">
+                <div class="about-point">✔ Instant Delivery</div>
+                <div class="about-point">✔ Premium Quality</div>
+                <div class="about-point">✔ Trusted Support</div>
+                <div class="about-point">✔ Secure Experience</div>
+            </div>
+        </div>
+    </section>
+
+<section class="owner-section">
+
+    <div class="owner-card">
+
+        <div class="owner-image">
+            <img
+                src="https://i.ibb.co/gZLm5FzM/d77f8e928c2ba997b0fd0d23cb59f279-1-1.jpg"
+                alt="Kainat Fatima"
+            >
+        </div>
+
+        <div class="owner-content">
+
+            <h2>Kainat Fatima🤍</h2>
+
+          <p>
+💜 Hello and welcome to <strong>PurpleNest</strong>. I’m <strong>Kainat Fatima</strong>, the founder behind this digital store. PurpleNest was created with a vision to offer premium digital products in a beautiful and trusted space for everyone. 💜
+</p>
+
+<p>
+💜 Every part of PurpleNest is built with care, creativity, and passion to deliver quality digital products that bring real value. Thank you for being here, supporting this journey, and being part of PurpleNest. 💜
+</p>
+
+        </div>
+
+    </div>
+
+</section>
+
+    <!-- ============ TESTIMONIALS ============ -->
+    <section class="testimonials-section" id="testimonials">
+        <div class="container">
+            <div class="section-head">
+                <h2>What Customers Say</h2>
+                <p>Trusted by customers around the world.</p>
+            </div>
+            <div class="testimonial-slider">
+                <div class="testimonial-track" id="testimonialTrack">
+                    <div class="testimonial-card"><div class="stars">★★★★★</div><p>"Amazing quality and fast delivery. Highly recommend!"</p><h4>Ali Khan</h4></div>
+                    <div class="testimonial-card"><div class="stars">★★★★★</div><p>"Very professional service and premium results."</p><h4>Sarah Ahmed</h4></div>
+                    <div class="testimonial-card"><div class="stars">★★★★☆</div><p>"Smooth experience and excellent customer support."</p><h4>Usman Malik</h4></div>
+                    <div class="testimonial-card"><div class="stars">★★★★★</div><p>"Exceeded expectations. Will definitely order again."</p><h4>Hamza Tariq</h4></div>
+                    <div class="testimonial-card"><div class="stars">★★★★★</div><p>"Beautiful work and very easy process."</p><h4>Ayesha Noor</h4></div>
+                    <div class="testimonial-card"><div class="stars">★★★★★</div><p>"Loved the details and quick turnaround."</p><h4>Bilal Hussain</h4></div>
+                    <div class="testimonial-card"><div class="stars">★★★★☆</div><p>"Great communication and final product."</p><h4>Fatima Khan</h4></div>
+                    <div class="testimonial-card"><div class="stars">★★★★★</div><p>"Looks premium and professional."</p><h4>Zain Ali</h4></div>
+                    <div class="testimonial-card"><div class="stars">★★★★★</div><p>"Excellent quality from start to finish."</p><h4>Mariam</h4></div>
+                    <div class="testimonial-card"><div class="stars">★★★★★</div><p>"Really happy with the service provided."</p><h4>Ahmed Raza</h4></div>
+                </div>
+            </div>
+            <button class="review-btn" id="openReviewModal">Add Review</button>
+        </div>
+    </section>
+
+    <!-- ============ REVIEW MODAL ============ -->
+    <div class="review-modal" id="reviewModal">
+        <div class="modal-box">
+            <button class="close-btn" id="closeReviewModal">&times;</button>
+            <h3>Add Your Review</h3>
+            <form id="reviewForm">
+                <input type="text" placeholder="Your Name" required>
+                <textarea placeholder="Write your review..." required></textarea>
+                <select required>
+                    <option value="">Select Rating</option>
+                    <option>★★★★★</option>
+                    <option>★★★★☆</option>
+                    <option>★★★☆☆</option>
+                </select>
+                <button type="submit" class="submit-review-btn">Submit Review</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ============ TOAST ============ -->
+    <div class="toast" id="toast">Review submitted successfully!</div>
+
+    <!-- ============ CONTACT ============ -->
+    <section id="contact">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <p class="section-tagline">We'd love to hear from you</p>
+            <br>
+            <form class="contact-form" id="contactForm">
+                <input type="text" placeholder="Name" required>
+                <input type="text" placeholder="WhatsApp Number" required>
+                <input type="text" placeholder="Product Interested In">
+                <textarea placeholder="Message"></textarea>
+                <button class="btn btn-primary">Send Message</button>
+            </form>
+        </div>
+    </section>
+<!-- ============ FOOTER ============ -->
+<footer class="footer" id="footer">
+    <div class="container footer-grid">
+
+        <!-- Brand -->
+        <div class="footer-brand">
+            <div class="logo-wrap">
+                <div class="logo-icon">P</div>
+                <span class="brand-name">Premium Store</span>
+            </div>
+
+            <p class="footer-text">
+                Your trusted destination for premium digital products and services.
+                Fast delivery, trusted support, and high-quality solutions for every need.
+            </p>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-links">
+            <h3>Quick Links</h3>
+            <a href="#home">Home</a>
+            <a href="#services">Services</a>
+            <a href="#testimonials">Reviews</a>
+            <a href="#contact">Contact</a>
+        </div>
+
+        <!-- Contact -->
+        <div class="footer-links">
+            <h3>Contact</h3>
+            <a href="#">WhatsApp Support</a>
+            <a href="#">premiumstore@email.com</a>
+            <a href="#">Available 24/7</a>
+        </div>
+
+    </div>
+
+    <!-- Bottom -->
+    <div class="footer-bottom">
+        <p>© 2026 Premium Store • All Rights Reserved</p>
+    </div>
+</footer>
+
+    <script>
+      // ========== DOM Elements ==========
+const menuToggle = document.getElementById("menuToggle");
+const navLinks = document.getElementById("navLinks");
+const navOverlay = document.getElementById("navOverlay");
+const navbar = document.getElementById("navbar");
+const body = document.body;
+
+// ========== Helper: Lock/Unlock Scroll ==========
+function lockScroll() {
+    body.style.overflow = "hidden";
+}
+function unlockScroll() {
+    const reviewModal = document.getElementById("reviewModal");
+    if (!navLinks.classList.contains("active") && !reviewModal.classList.contains("active")) {
+        body.style.overflow = "";
+    }
+}
+
+// ========== Hamburger Menu Functions ==========
+function openMenu() {
+    navLinks.classList.add("active");
+    menuToggle.classList.add("active");
+    navOverlay.classList.add("active");
+    menuToggle.setAttribute("aria-expanded", "true");
+    lockScroll();
+}
+
+function closeMenu() {
+    navLinks.classList.remove("active");
+    menuToggle.classList.remove("active");
+    navOverlay.classList.remove("active");
+    menuToggle.setAttribute("aria-expanded", "false");
+    unlockScroll();
+}
+
+menuToggle.addEventListener("click", () => {
+    navLinks.classList.contains("active") ? closeMenu() : openMenu();
+});
+
+navOverlay.addEventListener("click", closeMenu);
+
+navLinks.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", () => {
+        if (navLinks.classList.contains("active")) closeMenu();
+    });
+});
+
+document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && navLinks.classList.contains("active")) closeMenu();
+});
+
+// ========== Scroll Effects & Active Link ==========
+window.addEventListener("scroll", () => {
+    navbar.classList.toggle("scrolled", window.scrollY > 50);
+    updateActiveLink();
+});
+
+function updateActiveLink() {
+    const sections = document.querySelectorAll("section[id]");
+    const navLinksAll = document.querySelectorAll("#navLinks a:not(.mobile-cta a)");
+    let current = "";
+    sections.forEach(section => {
+        if (window.scrollY >= section.offsetTop - 100) current = section.getAttribute("id");
+    });
+    navLinksAll.forEach(link => {
+        link.classList.toggle("active-link", link.getAttribute("href") === `#${current}`);
+    });
+}
+
+// ========== Counters Animation ==========
+document.querySelectorAll(".counter").forEach(counter => {
+    const update = () => {
+        const target = +counter.getAttribute("data-target");
+        const current = +counter.innerText;
+        const increment = target / 80;
+        if (current < target) {
+            counter.innerText = Math.ceil(current + increment);
+            setTimeout(update, 20);
+        } else {
+            counter.innerText = target;
+        }
+    };
+    update();
+});
+
+// ========== Product Data with dedicated detail pages ==========
+const products = [
+    { title: "Netflix Premium", desc: "4K premium Netflix access with instant delivery.", price: "Rs. 999", old: "Rs. 1299", image: "https://i.ibb.co/MDZNRNFw/06d3c1e2a93e09d9be2e3027ed05624b.jpg", detailPage: "netflix-premium.html" },
+    { title: "Amazon Prime", desc: "Premium Prime subscription with fast access.", price: "Rs. 899", old: "Rs. 1199", image: "https://i.ibb.co/RkMDrD8C/a0c56db3d0f7b4f7eca6b9b6a8724e90.jpg", detailPage: "amazon-prime.html" },
+    { title: "OpenAI Subscription", desc: "Premium OpenAI access instantly delivered.", price: "Rs. 1499", old: "Rs. 1799", image: "https://i.ibb.co/SDxNzmPt/6bac6460e0d2c9e3f386caab8a0a9500.jpg", detailPage: "chatgptplus.html" },
+    { title: "PUBG UC", desc: "UC top-ups delivered instantly.", price: "Rs. 699", old: "Rs. 899", image: "https://i.ibb.co/MDZNRNFw/06d3c1e2a93e09d9be2e3027ed05624b.jpg", detailPage: "pubg-uc.html" },
+    { title: "Graphic Design Bundle", desc: "Premium templates and assets.", price: "Rs. 999", old: "Rs. 1499", image: "https://i.ibb.co/RkMDrD8C/a0c56db3d0f7b4f7eca6b9b6a8724e90.jpg", detailPage: "graphic-design-bundle.html" },
+    { title: "Editing Assets", desc: "Transitions, LUTs and effects pack.", price: "Rs. 799", old: "Rs. 1099", image: "https://i.ibb.co/SDxNzmPt/6bac6460e0d2c9e3f386caab8a0a9500.jpg", detailPage: "editing-assets.html" }
+];
+
+// Render Products
+const grid = document.getElementById("productsGrid");
+if (grid) {
+    products.forEach(p => {
+        grid.innerHTML += `
+            <div class="glass product-card">
+                <img src="${p.image}" alt="${p.title}" style="width:100%; border-radius:18px;">
+                <h3>${p.title}</h3>
+                <p>${p.desc}</p>
+                <div class="price">
+                    <span class="old">${p.old}</span>
+                    <span class="new">${p.price}</span>
+                </div>
+                <div class="card-buttons">
+                    <a target="_blank" class="btn btn-primary" href="https://wa.me/your-number?text=Hi%20I%20want%20to%20buy%20${encodeURIComponent(p.title)}">Buy Now</a>
+                    <a href="${p.detailPage}" class="btn btn-outline">More Details</a>
+                </div>
+            </div>
+        `;
+    });
+}
+
+// ========== Toast Notification ==========
+function showToast(msg) {
+    const toast = document.getElementById("toast");
+    if (!toast) return;
+    toast.innerText = msg;
+    toast.classList.add("show");
+    setTimeout(() => toast.classList.remove("show"), 3000);
+}
+
+// ========== Contact Form ==========
+const contactForm = document.getElementById("contactForm");
+if (contactForm) {
+    contactForm.addEventListener("submit", e => {
+        e.preventDefault();
+        showToast("✔ Request sent successfully");
+        e.target.reset();
+    });
+}
+
+// ========== Review Modal (scope fix) ==========
+let closeReviewModal;
+
+const reviewModal = document.getElementById("reviewModal");
+const openReviewBtn = document.getElementById("openReviewModal");
+const closeReviewBtn = document.getElementById("closeReviewModal");
+const reviewForm = document.getElementById("reviewForm");
+
+if (openReviewBtn && reviewModal) {
+    openReviewBtn.addEventListener("click", () => {
+        reviewModal.classList.add("active");
+        lockScroll();
+    });
+    
+    closeReviewModal = () => {
+        reviewModal.classList.remove("active");
+        unlockScroll();
+    };
+    
+    if (closeReviewBtn) closeReviewBtn.addEventListener("click", closeReviewModal);
+    window.addEventListener("click", e => { if (e.target === reviewModal) closeReviewModal(); });
+    
+    if (reviewForm) {
+        reviewForm.addEventListener("submit", function(e) {
+            e.preventDefault();
+            closeReviewModal();
+            showToast("Review submitted successfully!");
+            this.reset();
+        });
+    }
+}
+
+// ========== Infinite Testimonials Scroll ==========
+const track = document.getElementById("testimonialTrack");
+if (track) {
+    track.innerHTML = track.innerHTML + track.innerHTML;
+}
+
+// ========== Initialize Active Link ==========
+updateActiveLink();
+
+document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+        if (reviewModal && reviewModal.classList.contains("active")) {
+            closeReviewModal();
+        }
+        if (navLinks.classList.contains("active")) {
+            closeMenu();
+        }
+    }
+});
+    </script>
+</body>
+</html>
